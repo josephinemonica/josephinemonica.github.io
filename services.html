@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Services — Josephine Monica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/base.css">
+<style>
+  .page { max-width: var(--maxw); margin: 0 auto; padding: 56px 24px 0; }
+  .page h1 {
+    font-family: var(--serif); font-weight: 500; font-size: 32px;
+    letter-spacing: -0.01em; margin: 0 0 8px;
+  }
+  .page .sub {
+    font-family: var(--serif); font-style: italic; color: var(--muted);
+    font-size: 17px; margin: 0 0 40px; text-wrap: pretty;
+  }
+
+  .services { list-style: none; padding: 0; margin: 0; }
+  .services li {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .services .n {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    padding-top: 4px;
+  }
+  .services h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 20px;
+    margin: 0 0 6px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .services p {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+    text-wrap: pretty;
+  }
+  .services .tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 8px;
+  }
+  .services .tags span {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 2px 8px; border-radius: 99px;
+  }
+
+  .contact {
+    margin-top: 48px;
+    padding: 24px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--bg-elev);
+  }
+  .contact h3 {
+    font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--muted); font-weight: 500;
+    margin: 0 0 8px;
+  }
+  .contact p {
+    font-family: var(--serif); font-size: 17px; line-height: 1.5;
+    margin: 0 0 12px; color: var(--ink-soft);
+  }
+  .contact a.cta {
+    font-family: var(--mono); font-size: 13px;
+    color: var(--bg); background: var(--ink);
+    text-decoration: none; padding: 8px 14px;
+    border-radius: 4px; display: inline-block;
+  }
+  .contact a.cta:hover { background: var(--accent); }
+</style>
+</head>
+<body data-screen-label="Services">
+
+<header class="site-nav">
+  <a href="index.html" class="brand">Josephine Monica</a>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="resume.html">Resume</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="blog.html">Blog</a>
+  </nav>
+</header>
+
+<main class="page">
+  <h1>Services</h1>
+  <p class="sub">Selective consulting, mentoring, and teaching — drawing on a decade across physics, robotics, autonomous systems, and semiconductor manufacturing. I take on a small number of engagements at a time.</p>
+
+  <ol class="services">
+    <li>
+      <div class="n">01</div>
+      <div>
+        <h3>Data science &amp; advanced analytics</h3>
+        <p>End-to-end analytics work for teams running on too much data and not enough signal. Process-data audits, anomaly detection, time-series modeling, root-cause analysis, and the kind of statistical rigor that separates a chart from a decision. Built for messy, high-volume operational environments — semiconductor fabs, discrete manufacturing, robotics fleets, ops teams.</p>
+        <div class="tags"><span>Anomaly detection</span><span>Time-series</span><span>SPC &amp; yield</span><span>Causal analysis</span><span>Forecasting</span><span>Pipelines</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="n">02</div>
+      <div>
+        <h3>Industrial engineering &amp; data-science advisory</h3>
+        <p>Strategic and technical advisory for leaders standing up an analytics function inside an engineering or manufacturing organization. Helping teams choose the right problems, structure data infrastructure, and turn operational data into measurable efficiency gains and confident decisions.</p>
+        <div class="tags"><span>Analytics strategy</span><span>Data infrastructure</span><span>Decision systems</span><span>KPI design</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="n">03</div>
+      <div>
+        <h3>Research collaboration</h3>
+        <p>Open to collaborations across robotics, AI, autonomous systems, and applied data science — especially work that sits between theory and a real, measurable system. Joint papers, applied research engagements, or co-supervision with academic groups and research labs.</p>
+        <div class="tags"><span>Robotics &amp; AI</span><span>Autonomous systems</span><span>Applied research</span><span>Co-authorship</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="n">04</div>
+      <div>
+        <h3>Mentoring</h3>
+        <p>One-on-one mentoring tailored to where you are. PhD and graduate-school applications (research fit, statements, programs); early-career navigation between research and industry; and broader research-career guidance for students moving from coursework to original work.</p>
+        <div class="tags"><span>Grad-school applications</span><span>Research mentoring</span><span>Early-career navigation</span><span>Career strategy</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="n">05</div>
+      <div>
+        <h3>Teaching &amp; tutoring</h3>
+        <p>Private and small-group teaching across the subjects I've trained students in — from olympiad-level physics to university-level coursework. Years of experience as a TA at Cornell and as a Physics Olympiad trainer at Raffles Junior College, Singapore.</p>
+        <div class="tags"><span>Olympiad physics</span><span>Physics</span><span>Mathematics</span><span>Programming</span><span>Data science</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="n">06</div>
+      <div>
+        <h3>Robotics &amp; autonomous systems consulting</h3>
+        <p>Technical scoping, due diligence, and research direction for early-stage robotics and AV efforts. Especially useful for the messy gap between a lab demo and a deployable system — perception, manipulation, learning from demonstration, and honest evaluation design.</p>
+        <div class="tags"><span>Manipulation</span><span>Perception</span><span>Sim-to-real</span><span>Eval design</span><span>Roadmaps</span></div>
+      </div>
+    </li>
+  </ol>
+
+  <div class="contact">
+    <h3>Working together</h3>
+    <p>If one of these sounds like the shape of your problem, send a short note describing the situation and the outcome you want. I'll reply within a week.</p>
+    <a class="cta" href="mailto:josephinemonica09@gmail.com">Get in touch →</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Josephine Monica</span>
+  <span><a href="index.html" style="color:var(--muted);text-decoration:none;">← About</a></span>
+</footer>
+
+</body>
+</html>

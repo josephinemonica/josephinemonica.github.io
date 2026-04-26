@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resume — Josephine Monica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/base.css">
+<style>
+  /* Resume — same visual vocabulary as the rest of the site:
+     - warm off-white background (no white paper container)
+     - Newsreader serif body, mono small-caps section heads
+     - --accent on the name (matches site accent)
+     - moderncv-style two-column rows: left = date, right = content
+  */
+
+  .resume-page { max-width: var(--maxw); margin: 0 auto; padding: 24px 40px 0; }
+
+  /* Masthead — echoes .v-academic .masthead but tuned for a CV */
+  .resume-page .masthead {
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 22px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 32px;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .resume-page .masthead h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 34px;
+    letter-spacing: -0.01em;
+    margin: 0;
+    line-height: 1.1;
+  }
+  .resume-page .masthead h1 .accent { color: var(--accent); font-style: italic; font-weight: 400; }
+  .resume-page .masthead .meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.7;
+  }
+  .resume-page .masthead .meta a { color: var(--muted); text-decoration: none; }
+  .resume-page .masthead .meta a:hover { color: var(--accent); }
+
+  /* Lede paragraph — matches .v-academic .bio p.lede */
+  .resume-page .lede {
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0 0 44px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+    text-wrap: pretty;
+    max-width: 980px;
+  }
+
+  /* Sections */
+  .resume-page section { margin-bottom: 36px; }
+  .resume-page h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    font-weight: 500;
+    margin: 0 0 4px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* moderncv-style two-column rows */
+  .resume-page .row {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+    gap: 32px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .resume-page .row:last-child { border-bottom: 0; }
+
+  .resume-page .row .when {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    padding-top: 4px;
+    white-space: nowrap;
+  }
+
+  .resume-page .row .what {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .resume-page .row .what .role { font-weight: 500; }
+  .resume-page .row .what .org  { color: var(--ink-soft); }
+  .resume-page .row .what .meta {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+  .resume-page .row .what p {
+    margin: 10px 0 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+    max-width: 800px;
+  }
+
+  /* Awards — same row, with optional descriptive subline */
+  .resume-page .award .what strong { font-weight: 500; color: var(--ink); }
+  .resume-page .award .what em.desc {
+    display: block;
+    font-style: normal;
+    font-size: 14.5px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.5;
+    max-width: 800px;
+  }
+
+  /* Skills */
+  .resume-page .skill .what .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-right: 10px;
+  }
+  .resume-page .skill .what .body {
+    color: var(--ink-soft);
+  }
+
+  .resume-page .footnote {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin: 48px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media print {
+    body { background: white; }
+    header.site-nav, .site-footer { display: none !important; }
+    .resume-page { max-width: 100%; padding: 24px 36px; }
+  }
+
+  @media (max-width: 720px) {
+    .resume-page { padding: 16px 20px 0; }
+    .resume-page .masthead { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .resume-page .masthead .meta { text-align: left; }
+    .resume-page .row { grid-template-columns: 1fr; gap: 6px; padding: 14px 0; }
+  }
+</style>
+</head>
+<body data-screen-label="Resume">
+
+<header class="site-nav">
+  <a href="index.html" class="brand">Josephine Monica</a>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="resume.html" class="active">Resume</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html">Blog</a>
+  </nav>
+</header>
+
+<main>
+  <article class="resume-page">
+
+    <header class="masthead">
+      <h1>Josephine <span class="accent">Monica</span></h1>
+      <div class="meta">
+        Singapore<br>
+        <a href="mailto:josephinemonica09@gmail.com">josephinemonica09@gmail.com</a><br>
+        <a href="index.html">josephinemonica.com</a>
+      </div>
+    </header>
+
+    <p class="lede">Data and systems engineer at the world's largest semiconductor R&amp;D fab, building scalable data infrastructure, advanced analytics, and AI-driven decision systems for complex manufacturing environments. PhD in Robotics &amp; AI from Cornell, with a background in physics olympiads and a habit of reaching for first principles.</p>
+
+    <section>
+      <h2>Education</h2>
+      <div class="row">
+        <div class="when">2018 — 2023</div>
+        <div class="what">
+          <span class="role">Cornell University</span> · <span class="org">PhD, Mechanical Engineering, minor in Computer Science (AI)</span>
+          <span class="meta">Advisor: Mark Campbell · GPA 4.30 / 4.30 · Ithaca, NY</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">2014 — 2018</div>
+        <div class="what">
+          <span class="role">Nanyang Technological University</span> · <span class="org">B.Eng. Mechanical Engineering, specialization in Robotics &amp; Mechatronics</span>
+          <span class="meta">GPA 4.95 / 5.00 · Singapore</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">Spring 2017</div>
+        <div class="what">
+          <span class="role">McGill University</span> · <span class="org">Undergraduate Exchange Program</span>
+          <span class="meta">Montréal, Canada</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Industrial Experience</h2>
+      <div class="row">
+        <div class="when">2023 — present</div>
+        <div class="what">
+          <span class="role">IBM Research — Semiconductor Technology R&amp;D</span> · <span class="org">Industrial Engineer &amp; Data Scientist</span>
+          <span class="meta">Albany, NY</span>
+          <p>Drive data and analytics strategy within a semiconductor R&amp;D fab, bridging engineering, operations, and leadership to improve performance and decision-making. Delivered integrated tools and systems that provide end-to-end visibility into manufacturing operations, enabling proactive identification of constraints, optimization opportunities, and execution risks.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">May — Aug 2022</div>
+        <div class="what">
+          <span class="role">IBM Thomas J. Watson Research Center</span> · <span class="org">Research Intern</span>
+          <span class="meta">Yorktown Heights, NY</span>
+          <p>Worked across three projects: a next-generation semiconductor measurement system, magnetic levitation for high-speed rail, and a low-frequency seismometer. Built prototypes, developed theory and simulations, and filed four patent applications.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">Aug — Dec 2016</div>
+        <div class="what">
+          <span class="role">Temasek Laboratory</span> · <span class="org">Intern</span>
+          <span class="meta">Singapore</span>
+          <p>Performed data acquisition, mechanical part design, hardware testing, simulation, and characteristic-performance analysis on a chip-scale atomic clock for a nanocube satellite.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Teaching Experience</h2>
+      <div class="row">
+        <div class="when">Fall 2021</div>
+        <div class="what">
+          <span class="role">Intermediate Dynamics</span> · <span class="org">Teaching Assistant — Cornell University</span>
+          <p>Taught students to approach classical dynamics problems both analytically and numerically. Held office hours and recitation, created autograders, and graded problem sets.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">Spring 2021</div>
+        <div class="what">
+          <span class="role">Autonomous Mobile Robots</span> · <span class="org">Teaching Assistant — Cornell University</span>
+          <p>Introduced students to techniques in sensing, perception, control, planning, mechanical design, and human–robot interaction. Helped design course material, facilitated lab sessions, held office hours and recitation, created autograders, and graded.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">2015 — 2018</div>
+        <div class="what">
+          <span class="role">Electrical Circuits, Dynamics &amp; Physics</span> · <span class="org">Peer Tutor — Nanyang Technological University</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">2015 — 2016</div>
+        <div class="what">
+          <span class="role">Singapore &amp; Asian Physics Olympiad</span> · <span class="org">Physics Olympiad Trainer — Raffles Junior College, Singapore</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Honors &amp; Awards</h2>
+
+      <div class="row award">
+        <div class="when">2023</div>
+        <div class="what">
+          <strong>First Patent File Badge</strong> · IBM
+          <em class="desc">Awarded to an inventor for their first application filed with the U.S. Patent &amp; Trademark Office.</em>
+        </div>
+      </div>
+
+      <div class="row award">
+        <div class="when">2018</div>
+        <div class="what">
+          <strong>Lee Kuan Yew Gold Medal</strong> · Nanyang Technological University
+          <em class="desc">The highest undergraduate honor — awarded to the single student in each department who is first in general proficiency throughout the programme of study.</em>
+        </div>
+      </div>
+
+      <div class="row award">
+        <div class="when">2018</div>
+        <div class="what">
+          <strong>Dr Leung Shiu Kee Gold Medal</strong> · Nanyang Technological University
+          <em class="desc">Awarded to an outstanding final-year student with a distinguished record in academic and extra-curricular activities, who has demonstrated excellence in the undergraduate thesis for the B.Eng. (Mechanical Engineering).</em>
+        </div>
+      </div>
+
+      <div class="row award">
+        <div class="when">2018</div>
+        <div class="what">
+          <strong>Shell Gold Medal</strong> · Nanyang Technological University
+          <em class="desc">Awarded to the student with the highest aggregate marks in Engineering Innovation &amp; Design and Engineers and Society, having obtained at least Honours (Distinction).</em>
+        </div>
+      </div>
+
+      <div class="row award">
+        <div class="when">2018</div>
+        <div class="what">
+          <strong>BP Book Prize</strong> · Nanyang Technological University
+          <em class="desc">Awarded to the student with the highest aggregate marks in Engineers and Society and the Final Year Project, having obtained at least Honours (Distinction).</em>
+        </div>
+      </div>
+
+      <div class="row award">
+        <div class="when">2014 — 2018</div>
+        <div class="what">
+          <strong>Undergraduate Scholarship</strong> · Indonesian Government
+        </div>
+      </div>
+
+      <div class="row award">
+        <div class="when">2017</div>
+        <div class="what">
+          <strong>Exchange Travel Grant — McGill University</strong> · Nanyang Technological University
+        </div>
+      </div>
+
+      <div class="row award">
+        <div class="when">2016</div>
+        <div class="what">
+          <strong>2nd Prize, Undergraduate Research Competition</strong> · Nanyang Technological University
+          <em class="desc">Project: Intelligent Traffic Light.</em>
+        </div>
+      </div>
+
+      <div class="row award">
+        <div class="when">2014</div>
+        <div class="what">
+          <strong>Gold Medal, 45th International Physics Olympiad</strong>
+          <em class="desc">The highest-level competition for high-school physics students from around the world.</em>
+        </div>
+      </div>
+
+      <div class="row award">
+        <div class="when">2014</div>
+        <div class="what">
+          <strong>Silver Medal, 15th Asian Physics Olympiad</strong>
+          <em class="desc">An annual physics competition for high-school students from Asia and Oceania.</em>
+        </div>
+      </div>
+
+      <div class="row award">
+        <div class="when">2013</div>
+        <div class="what">
+          <strong>Gold Medal &amp; Best Female Award, 14th Asian Physics Olympiad</strong>
+          <em class="desc">An annual physics competition for high-school students from Asia and Oceania.</em>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Technical Strengths</h2>
+      <div class="row skill">
+        <div class="when">Computer</div>
+        <div class="what">
+          <span class="body">Python, PyTorch, MATLAB, C++, Robot Operating System (ROS), L<sup>A</sup>T<sub>E</sub>X, Linux, Windows.</span>
+        </div>
+      </div>
+      <div class="row skill">
+        <div class="when">Languages</div>
+        <div class="what">
+          <span class="body">English (full professional proficiency, TOEFL 119 / 120), Indonesian (native), Mandarin Chinese (elementary).</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="footnote">
+      <span>Last updated April 2026</span>
+      <span>Full publication and patent list available on request</span>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Josephine Monica</span>
+  <span><a href="index.html" style="color:var(--muted);text-decoration:none;">← About</a></span>
+</footer>
+
+</body>
+</html>
